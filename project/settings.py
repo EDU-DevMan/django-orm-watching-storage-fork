@@ -1,13 +1,16 @@
 import os
 
+from decouple import config
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': '',
-        'PORT': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'HOST': config('HOST_NAME'),
+        'PORT': config('PORT_DB'),
+        'NAME': config('NAME_DB'),
+        'USER': config('USER_DB'),
+        'PASSWORD': config('PASS_DB'),
     }
 }
 
