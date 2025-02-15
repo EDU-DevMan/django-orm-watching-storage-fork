@@ -1,6 +1,6 @@
 from django.db import models
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.utils.timezone import localtime
 
 
@@ -39,9 +39,9 @@ class Visit(models.Model):
         return False
 
     def get_duration(visit):
-        time_now = datetime.now()
-        time_then = localtime(visit.entered_at).replace(tzinfo=None)
-        duration = time_now - time_then
+        time_entered = localtime(visit.entered_at).replace(tzinfo=None)
+        time_leaved = localtime(visit.leaved_at).replace(tzinfo=None)
+        duration = time_leaved - time_entered
 
         return duration
 
