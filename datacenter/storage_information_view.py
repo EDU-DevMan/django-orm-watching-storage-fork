@@ -4,16 +4,22 @@ from django.shortcuts import render
 
 
 def storage_information_view(request):
-    # Программируем здесь
+    visits = Visit.objects.all().filter(leaved_at=None)
+    non_closed_visits = []
 
-    non_closed_visits = [
-        {
-            'who_entered': 'Richard Shaw',
-            'entered_at': '11-04-2018 25:34',
-            'duration': '25:03',
-        }
-    ]
+    for i in range(len(visits)):
+        duration = Visit.get_duration(visits[i])
+        non_closed_visits.append({
+            'who_entered': visits[i].passcard,
+            'entered_at': visits[i].created_at,
+            'duration': Visit.format_duration(duration),
+            'is_strange': (Visit.is_visit_long(
+                Visit.get_duration(visits[i]).seconds)
+                    )
+            })
+
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
+
     return render(request, 'storage_information.html', context)
