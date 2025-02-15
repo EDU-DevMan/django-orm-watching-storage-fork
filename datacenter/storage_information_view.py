@@ -1,4 +1,3 @@
-from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 
@@ -12,7 +11,7 @@ def storage_information_view(request):
         non_closed_visits.append({
             'who_entered': visits[i].passcard,
             'entered_at': visits[i].created_at,
-            'duration': Visit.format_duration(duration),
+            'duration': Visit.format_duration(duration.seconds),
             'is_strange': (Visit.is_visit_long(
                 Visit.get_duration(visits[i]).seconds)
                     )
