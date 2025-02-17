@@ -1,8 +1,5 @@
 from django.db import models
 
-from datetime import timedelta
-from django.utils.timezone import localtime
-
 
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
