@@ -10,8 +10,8 @@ class DurationDate():
         return False
 
     def get_duration(visit):
-        time_entered = localtime(visit.entered_at).replace(tzinfo=None)
-        time_leaved = localtime(visit.leaved_at).replace(tzinfo=None)
+        time_entered = localtime(visit.entered_at)
+        time_leaved = localtime(visit.leaved_at)
         duration = time_leaved - time_entered
 
         return duration
