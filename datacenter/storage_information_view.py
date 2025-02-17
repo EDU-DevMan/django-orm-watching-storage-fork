@@ -1,6 +1,8 @@
 from datacenter.models import Visit
 from django.shortcuts import render
 
+from datacenter.duration_date import DurationDate
+
 
 def storage_information_view(request):
     visits = Visit.objects.all().filter(leaved_at=None)
@@ -11,9 +13,9 @@ def storage_information_view(request):
         non_closed_visits.append({
             'who_entered': visits[i].passcard,
             'entered_at': visits[i].created_at,
-            'duration': Visit.format_duration(duration.seconds),
-            'is_strange': (Visit.is_visit_long(
-                Visit.get_duration(visits[i]).seconds)
+            'duration': DurationDate.format_duration(duration.seconds),
+            'is_strange': (DurationDate.is_visit_long(
+                DurationDate.get_duration(visits[i]).seconds)
                     )
             })
 
