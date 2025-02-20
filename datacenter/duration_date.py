@@ -4,10 +4,9 @@ from django.utils.timezone import localtime
 
 class DurationDate():
     def is_visit_long(visit, minutes=60):
-        if visit / 60 > minutes:
-            return True
+        check_time = (visit/60 > minutes)
 
-        return False
+        return check_time
 
     def get_duration(visit):
         time_entered = localtime(visit.entered_at)
