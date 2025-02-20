@@ -17,6 +17,7 @@ class DurationDate():
         return duration
 
     def format_duration(duration):
-        string_time = timedelta(seconds=round(duration))
+        hours = int(duration // 3600)
+        minutes = int((duration % 3600) // 60)
 
-        return string_time
+        return f'{hours}ч {minutes}мин'
