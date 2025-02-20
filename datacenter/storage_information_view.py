@@ -14,9 +14,7 @@ def storage_information_view(request):
             'who_entered': visits[i].passcard,
             'entered_at': visits[i].created_at,
             'duration': DurationDate.format_duration(duration.seconds),
-            'is_strange': (DurationDate.is_visit_long(
-                DurationDate.get_duration(visits[i]).seconds)
-                    )
+            'is_strange': (DurationDate.is_visit_long(duration.seconds))
             })
 
     context = {
