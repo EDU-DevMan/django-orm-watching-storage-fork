@@ -9,7 +9,7 @@ def storage_information_view(request):
     non_closed_visits = []
 
     for i in range(len(visits)):
-        duration = DurationDate.get_duration(visits[i]).seconds
+        duration = DurationDate.get_duration(visits[i])
         non_closed_visits.append({
             'who_entered': visits[i].passcard,
             'entered_at': visits[i].created_at,

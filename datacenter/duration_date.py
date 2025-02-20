@@ -13,7 +13,7 @@ class DurationDate:
         time_leaved = localtime(visit.leaved_at)
         duration = time_leaved - time_entered
 
-        return duration
+        return duration.total_seconds()
 
     def format_duration(duration):
         hours = int(duration // 3600)
