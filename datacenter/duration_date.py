@@ -2,7 +2,7 @@ from datetime import timedelta
 from django.utils.timezone import localtime
 
 
-class DurationDate():
+class DurationDate:
     def is_visit_long(visit, minutes=60):
         check_time = (visit/60 > minutes)
 
