@@ -3,7 +3,9 @@ from datacenter.models import Visit
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
-from datacenter.duration_date import DurationDate
+from datacenter.duration_date import get_duration
+from datacenter.duration_date import format_duration
+from datacenter.duration_date import is_visit_long
 
 
 def passcard_info_view(request, passcode):
@@ -11,11 +13,11 @@ def passcard_info_view(request, passcode):
     this_passcard_visits = []
 
     for visit in Visit.objects.all().filter(passcard=passcard):
-        duration = DurationDate.get_duration(visit)
+        duration = get_duration(visit)
         this_passcard_visits.append({
                 'entered_at': visit.entered_at,
-                'duration': DurationDate.format_duration(duration),
-                'is_strange': (DurationDate.is_visit_long(duration))
+                'duration': format_duration(duration),
+                'is_strange': (is_visit_long(duration))
             }),
 
     context = {
