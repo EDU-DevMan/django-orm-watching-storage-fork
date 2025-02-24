@@ -7,7 +7,7 @@ from datacenter.duration_date import is_visit_long
 
 
 def storage_information_view(request):
-    visits = Visit.objects.all().filter(leaved_at=None)
+    visits = Visit.objects.filter(leaved_at=None)
     non_closed_visits = []
 
     for i in range(len(visits)):

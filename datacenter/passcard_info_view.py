@@ -12,7 +12,7 @@ def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard.objects.filter(passcode=passcode))
     this_passcard_visits = []
 
-    for visit in Visit.objects.all().filter(passcard=passcard):
+    for visit in Visit.objects.filter(passcard=passcard):
         duration = get_duration(visit)
         this_passcard_visits.append({
                 'entered_at': visit.entered_at,
