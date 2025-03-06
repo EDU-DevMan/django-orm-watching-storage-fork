@@ -19,7 +19,6 @@ INSTALLED_APPS = ['datacenter']
 SECRET_KEY = config('SECRET')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
-TEMPLATE_DEBUG = DEBUG
 
 ROOT_URLCONF = 'project.urls'
 
